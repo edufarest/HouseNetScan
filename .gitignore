@@ -2,3 +2,4 @@
 targets.csv
 targetsName.csv
 venv/
+.env
