@@ -21,7 +21,7 @@ if len(sys.argv) > 0:
 else:
 
 
-    nmap = "echo ''" #"sudo nmap -sn 192.168.1.1/24 | grep -o -E '([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])'"
+    nmap = "sudo nmap -sn 192.168.1.1/24 | grep -o -E '([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])'"
 
 
     SentryMode = input("Sentry Mode? [y/N]") == "y"
