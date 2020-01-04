@@ -6,6 +6,11 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from dotenv import load_dotenv
+from notify_run import Notify
+from datetime import datetime
+
+
+notify = Notify()
 
 load_dotenv()
 
@@ -36,6 +41,8 @@ password = os.getenv('ROUTER_PASSWORD')
 cookies = {}
 
 while True:
+
+    print("Starting round - " + str(datetime.now()))
 
     if ScanType == 0 or ScanType == 2:
 
@@ -98,7 +105,10 @@ while True:
 
                     for device in connected:
                         if target == device.text:
+                            notify.send(target)
                             print(target)
+
+            driver.close()
 
     if not SentryMode:
         break
