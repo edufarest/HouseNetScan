@@ -6,15 +6,14 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from dotenv import load_dotenv
-from notify_run import Notify
 from datetime import datetime
-
-
-notify = Notify()
 
 load_dotenv()
 
-if len(sys.argv) > 0:
+def notify(dev):
+    print(dev)
+
+if len(sys.argv) > 1:
     if sys.argv[1] == "-h":
         print("-h: help\n" +
               "-f: fast, use default options")
@@ -105,8 +104,11 @@ while True:
 
                     for device in connected:
                         if target == device.text:
-                            notify.send(target)
+                            notify(target)
                             print(target)
+            else:
+                print("Couldn't find online devices")
+
 
             driver.close()
 
