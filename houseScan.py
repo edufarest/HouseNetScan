@@ -10,6 +10,8 @@ from datetime import datetime
 
 load_dotenv()
 
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
 def notify(dev):
     print(dev)
 
@@ -45,7 +47,7 @@ while True:
 
     if ScanType == 0 or ScanType == 2:
 
-        with open('targets.csv') as targetsFile:
+        with open(str(dir_path) + '/targets.csv') as targetsFile:
             targets = csv.reader(targetsFile, delimiter=',')
 
             connected = os.popen(nmap).read().split('\n')
@@ -59,7 +61,7 @@ while True:
                         print(target[0])
 
     if ScanType == 1 or ScanType == 2:
-        with open('targetsName.csv') as targetsFile:
+        with open(str(dir_path) + '/targetsName.csv') as targetsFile:
             targets = csv.reader(targetsFile, delimiter=',')
 
             URL = "http://192.168.1.1"
